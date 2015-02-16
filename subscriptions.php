@@ -218,8 +218,27 @@
 				<p><input type="hidden" name="type" value="sms" /><input type="hidden" name="list" /></p>
 				<p>
 					<label class="field-label">Message
-						<textarea rows="20" cols="100" name="message" class="medium"></textarea>
+						<textarea rows="20" cols="100" name="message" class="medium" onkeyup="CountLeft(this.form.message,this.form.rem_sms,160);"></textarea>
 					</label>
+				</p>
+                                <p>
+					<label class="field-label">Characters Remaining
+						<input readonly type="text" name="rem_sms" class="tiny" size="3" maxlength="3" value="160" />
+					</label>
+					<script language="JavaScript">
+					 function CountLeft(field, count, max) {
+					 if (field.value.length > max)
+					  {
+					  count.value = max - field.value.length;
+					  $(count).css({backgroundColor: "white",color: "red",fontWeight: "normal"});
+					 }
+					 else
+					  {
+					  count.value = max - field.value.length;
+					  $(count).css({backgroundColor: "white",color: "black",fontWeight: "normal"});
+					  }
+					 }
+					</script>
 				</p>
 				<p><button type="submit" class="submit-button"><span>Send</span></button></p>
 <?php else: ?>
